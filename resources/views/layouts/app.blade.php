@@ -38,9 +38,11 @@
                                     <a class="nav-link" href="{{ route('admin.items.create') }}">Create Item</a>
                                 </li>
                             @endif
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('expenditures.index') }}">My Expenditures</a>
-                            </li>
+                            @if (auth()->user()->role !== 'admin')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('expenditures.index') }}">My Expenditures</a>
+                                </li>
+                            @endif
                         @endauth
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
@@ -51,6 +53,7 @@
                     @endguest
                 </ul>
             </div>
+
         </div>
     </nav>
 

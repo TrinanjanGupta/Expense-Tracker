@@ -11,7 +11,7 @@ class Item extends Model
     protected $guarded = ['id'];
     public function itemGroup()
     {
-        return $this->belongsTo(ItemGroup::class);
+        return $this->belongsTo(ItemGroup::class,'item_group_id');
     }
 
     public function expenditures()

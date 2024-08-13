@@ -31,11 +31,11 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::post('admin/item/create', [AdminController::class, 'createItem'])->name('admin.items.store');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('expenditures', [ExpenditureController::class, 'viewExpenditures'])->name('expenditures.index');
-    Route::post('expenditures', [ExpenditureController::class, 'addExpenditure']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('expenditures', [ExpenditureController::class, 'viewExpenditures'])->name('expenditures.index'); 
+    Route::post('expenditures', [ExpenditureController::class, 'addExpenditure'])->name('expenditures.store');
+    Route::get('items/{categoryId}', [ExpenditureController::class, 'getItemsByCategory'])->name('items.byCategory');
 });
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -11,6 +11,6 @@ class ItemGroup extends Model
     protected $guarded = ['id'];
     public function items()
     {
-        return $this->hasMany(Item::class);
+        return $this->hasMany(Item::class,'item_group_id');
     }
 }
